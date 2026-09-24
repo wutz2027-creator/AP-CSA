@@ -1,0 +1,51 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package phonenum;
+
+import java.util.Scanner;
+import java.util.Random;
+
+/**
+ *
+ * @author wutz2027
+ */
+public class PhoneNum {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        
+        String p = "";
+        Random generator = new Random();
+       
+        while(!p.equals("-1")){
+            System.out.println("Press p to generate a phone number or r to roll a die, press -1 to stop");
+            p = scan.next();
+            if (p.equals("p")){
+            int num1 = generator.nextInt(8);
+            int num2 = generator.nextInt(8);
+            int num3 = generator.nextInt(8);
+            String areaCode = (String.valueOf(num1) + String.valueOf(num2) + String.valueOf(num3));
+            int num = generator.nextInt(655);
+            int num31 = generator.nextInt(10);
+            int num32 = generator.nextInt(10);
+            int num33 = generator.nextInt(10);
+            int num34 = generator.nextInt(10);
+            String lastFour = (String.valueOf(num31) + String.valueOf(num32) + String.valueOf(num33) + String.valueOf(num34));
+            System.out.print("(" + areaCode + ")" + "-");
+            System.out.printf("%03d", num);
+            System.out.print("-" + lastFour + "\n");
+            }
+            if (p.equals("r")){
+                int roll = generator.nextInt(6)+1;
+                System.out.print("You rolled a " + roll + "\n");
+            }
+            
+        }
+    }
+    
+}
