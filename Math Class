@@ -1,0 +1,87 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package quadratics;
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author wutz2027
+ */
+public class Quadratics {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+        Random rand = new Random();
+        
+        int number = rand.nextInt(91); // 0 to 90 inclusive
+        
+        double radians = Math.toRadians(number);
+        
+        double sine = Math.sin(radians);
+        double cosine = Math.cos(radians);
+        double tangent = Math.tan(radians);
+        
+        System.out.printf("Number: %d Sine: %.3f Cosine: %.3f Tangent: %.3f" +"\n",
+                number, sine, cosine, tangent);
+        
+        double radius = rand.nextDouble(20.0) + 1.0;
+        
+        double area = Math.PI * Math.pow(radius, 2);
+        double volume = Math.PI * (4/3) * Math.pow(radius, 3);
+        
+        System.out.printf("Number: %f Area of a circle: %.3f Volume of a sphere: %.3f" + "\n", radius, area, volume);
+        
+         double num = 100000000.0 + rand.nextDouble() * (100000000000.0 - 100000000.0);
+
+        double squareRoot = Math.sqrt(num);
+        double naturalLog = Math.log(num);
+        double log10 = Math.log10(num);
+
+        System.out.printf("Number: %.5f%n", num);
+        System.out.printf("Square Root: %.5f%n", squareRoot);
+        System.out.printf("Natural Logarithm: %.5f%n", naturalLog);
+        System.out.printf("Log10: %.5f%n", log10);
+
+        
+        Scanner input = new Scanner(System.in);
+
+        double n = 100000000.0 + rand.nextDouble() * (100000000000.0 - 100000000.0);
+
+        double c = 299792458.0;
+
+        double mass = (n / Math.pow(c, 2)) * 1000;
+
+        System.out.print("How many decimal places would you like? ");
+        int decimalPlaces = input.nextInt();
+
+        System.out.println("Energy: " + n + " J");
+        System.out.println("Mass: " + roundAvoid(mass, decimalPlaces) + " grams");
+        
+        Scanner inputB = new Scanner(System.in);
+
+        System.out.print("Enter a real number: ");
+        double m = inputB.nextDouble();
+
+        System.out.print("Enter an integer: ");
+        int x = inputB.nextInt();
+
+        System.out.print("Enter number of decimal places: ");
+        int dP = inputB.nextInt();
+
+        double answer = Math.pow(m, x);
+
+        System.out.println("Answer: " + roundAvoid(answer, dP));  
+    
+    }  
+public static double roundAvoid(double value, int places) {
+double scale = Math.pow(10, places);
+return Math.round(value * scale) / scale;
+
+    }
+}
