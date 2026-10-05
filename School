@@ -1,0 +1,92 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package school;
+
+import java.util.Scanner;
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.text.DecimalFormat;
+import java.util.Random;
+/**
+ *
+ * @author wutz2027
+ */
+public class School {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+         Scanner input = new Scanner(System.in);
+
+        // 1. Find the percentage of girls and boys
+        System.out.print("Enter the total number of students: ");
+        int totalStudents = input.nextInt();
+
+        System.out.print("Enter the number of girls: ");
+        int girls = input.nextInt();
+
+        int boys = totalStudents - girls;
+
+        double girlsPercent = (double) girls / totalStudents;
+        double boysPercent = (double) boys / totalStudents;
+
+        NumberFormat percent = NumberFormat.getPercentInstance();
+        percent.setMaximumFractionDigits(2);
+
+        System.out.println("Girls: " + percent.format(girlsPercent));
+        System.out.println("Boys: " + percent.format(boysPercent));
+
+
+        // 2. Convert dollars to British Pounds and Euros
+        System.out.print("\nEnter the amount of money in dollars and cents: $");
+        double dollars = input.nextDouble();
+
+        // Exchange rates:
+        // $1 = £0.75
+        // $1 = €0.86
+        double pounds = dollars * 0.75;
+        double euros = dollars * 0.86;
+
+        //currency format
+        NumberFormat gbp = NumberFormat.getCurrencyInstance(Locale.UK);
+        NumberFormat euro = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+    
+
+        System.out.println("Pounds ($1 = 0.75 GBP): " + gbp.format(pounds));
+        System.out.println("Euros ($1 = 0.86 EUR): " + euro.format(euros));
+
+
+        // 3. Format Pi to the requested number of decimal places
+        System.out.print("\nEnter an integer from 0 to 15: ");
+        int places = input.nextInt();
+
+        if (places >= 0 && places <= 15) {
+
+            String format = "%." + places + "f";
+
+            System.out.printf("Pi: " + format + "%n", Math.PI);
+
+        } else {
+            System.out.println("Number must be between 0 and 15.");
+        }
+
+
+        // 4. Generate a random number from 100,000,000 to 999e18
+      Random random = new Random();
+
+        double min = 100_000_000.0;
+        double max = 999e18;
+
+        // Generate random number between min and max
+        double randomNumber = min + (max - min) * random.nextDouble();
+
+        // Format the number without scientific notation
+        DecimalFormat format = new DecimalFormat("0.00");
+
+        System.out.println("Random number: " + format.format(randomNumber));
+    }
+    
+}
