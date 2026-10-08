@@ -1,0 +1,64 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package javaapplication16;
+
+import java.util.Scanner;
+/**
+ *
+ * @author wutz2027
+ */
+public class JavaApplication16 {
+
+    enum Days {MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY}
+    enum Months{JANUARY, FEBUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER}
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+       
+ Days[] days = Days.values();
+// I decided to learnt he for function to help make this proccess quicker
+        for (Days day : days) {
+            System.out.println((day.ordinal() + 1) + ". " + day);
+        }
+        System.out.print("\n");
+ Months[] months = Months.values();
+ 
+        for (Months month : months){
+            System.out.println((month.ordinal() + 1) + ". " + month);
+        }
+
+/* =================================================================
+        
+      Username Task ->  
+        */       
+ 
+         Scanner input = new Scanner(System.in);
+
+        // Ask for the CCHS username
+        System.out.print("Enter your CCHS username (including graduation year): ");
+        String username = input.nextLine();
+
+        // Get the last 4 characters which are the graduation year
+        String yearString = username.substring(username.length() - 4);
+
+        // Convert the String year into an Integer
+        Integer graduationYear = Integer.parseInt(yearString);
+
+        // Print the graduation year and the following year
+        System.out.println("You graduate in: " + graduationYear);
+        System.out.println("The year after your graduation will be: "
+                + (graduationYear + 1));
+
+        // Convert the graduation year to binary
+        String binaryYear = Integer.toBinaryString(graduationYear);
+
+        System.out.println("In computer language, you graduate in: "
+                + binaryYear);
+
+    }
+    
+}
