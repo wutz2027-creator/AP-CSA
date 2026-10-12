@@ -1,0 +1,113 @@
+/*
+1) What is the difference between a class and an object?
+- Class: A blueprint used to create objects.
+- Object: An instance of a class with its own data and methods.
+Example: Car is a class, while a specific Toyota Prius is an object.
+2) What happens when you pass an object to a print or println method?
+Java automatically calls the object's toString() method and prints the returned string.
+3) What is the scope of a variable in a method? In a class?
+- Method scope: A variable declared inside a method can only be used within that method or its declared block.
+- Class scope: An instance variable declared in a class can be accessed by the class's instance methods, subject to access modifiers.
+ */
+
+package car;
+
+public class Car {
+    private String carBrand;
+    private int enginePower;
+    private double maxSpeed;
+    private double price;
+
+    // Constructor
+    public Car() {
+        carBrand = "Unknown";
+        enginePower = 0;
+        maxSpeed = 0.0;
+        price = 0.0;
+    }
+
+    // Setters
+    public void setCarBrand(String carBrand) {
+        this.carBrand = carBrand;
+    }
+
+    public void setEnginePower(int enginePower) {
+        this.enginePower = enginePower;
+    }
+
+    public void setMaxSpeed(double maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    // Getters
+    public String getCarBrand() {
+        return carBrand;
+    }
+
+    public int getEnginePower() {
+        return enginePower;
+    }
+
+    public double getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    // toString method
+    @Override
+    public String toString() {
+        return "Brand: " + carBrand
+                + ", Engine Power: " + enginePower + " HP"
+                + ", Max Speed: " + maxSpeed + " MPH"
+                + ", Price: $" + price;
+    }
+}
+
+ class NewClass {
+    
+
+    public static void main(String[] args) {
+
+        // VW Bug
+        Car vw = new Car();
+        vw.setCarBrand("VW Bug");
+        vw.setEnginePower(60);
+        vw.setMaxSpeed(80.0);
+        vw.setPrice(25000.0);
+
+        // Toyota Prius
+        Car toyota = new Car();
+        toyota.setCarBrand("Toyota Prius");
+        toyota.setEnginePower(194);
+        toyota.setMaxSpeed(112.0);
+        toyota.setPrice(28000.0);
+
+        // BMW i8
+        Car bmw = new Car();
+        bmw.setCarBrand("BMW i8");
+        bmw.setEnginePower(369);
+        bmw.setMaxSpeed(155.0);
+        bmw.setPrice(147500.0);
+
+        // Tesla Model 3
+        Car tesla = new Car();
+        tesla.setCarBrand("Tesla Model 3");
+        tesla.setEnginePower(283);
+        tesla.setMaxSpeed(125.0);
+        tesla.setPrice(42000.0);
+
+        // Print car details
+        System.out.println(vw);
+        System.out.println(toyota);
+        System.out.println(bmw);
+        System.out.println(tesla);
+    }
+}
+
