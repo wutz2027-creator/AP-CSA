@@ -1,0 +1,112 @@
+
+package classes;
+
+
+
+public class Classes {
+    public static void main(String[] args) {
+
+        // Course 1: Full constructor
+        Course course1 = new Course(
+                "Computer Science", "AP CS A", 100, "Mr. Smith"
+        );
+
+        // Course 2: Title-only constructor
+        Course course2 = new Course("Biology");
+
+        course2.setCourseCode("AP Biology");
+        course2.setPointsTotal(95);
+        course2.setInstructorName("Mrs. Johnson");
+
+        // Get information using getters
+        System.out.println("Course 2 title: "
+                + course2.getCourseTitle());
+        System.out.println("Course 2 code: "
+                + course2.getCourseCode());
+        System.out.println();
+
+        // Course 3: Full constructor
+        Course course3 = new Course(
+                "Physics", "AP Physics C", 90, "Mr. Davis"
+        );
+
+        // Update course 3
+        course3.setPointsTotal(98);
+        course3.setInstructorName("Mrs. Davis");
+
+        // Print all courses
+        System.out.println("===== COURSE 1 =====");
+        System.out.println(course1);
+
+        System.out.println("\n===== COURSE 2 =====");
+        System.out.println(course2);
+
+        System.out.println("\n===== COURSE 3 =====");
+        System.out.println(course3);
+    }
+}
+
+class Course {
+    private String courseTitle;
+    private String courseCode;
+    private int pointsTotal;
+    private String instructorName;
+
+    // Full constructor
+    public Course(String title, String code, int points,
+                  String instructor) {
+        courseTitle = title;
+        courseCode = code;
+        pointsTotal = points;
+        instructorName = instructor;
+    }
+
+    // Title-only constructor
+    public Course(String title) {
+        courseTitle = title;
+        courseCode = "";
+        pointsTotal = 0;
+        instructorName = "";
+    }
+
+    // Getters
+    public String getCourseTitle() {
+        return courseTitle;
+    }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public int getPointsTotal() {
+        return pointsTotal;
+    }
+
+    public String getInstructorName() {
+        return instructorName;
+    }
+
+    // Setters
+    public void setCourseTitle(String title) {
+        courseTitle = title;
+    }
+
+    public void setCourseCode(String code) {
+        courseCode = code;
+    }
+
+    public void setPointsTotal(int points) {
+        pointsTotal = points;
+    }
+
+    public void setInstructorName(String instructor) {
+        instructorName = instructor;
+    }
+
+    // toString method
+    @Override
+    public String toString() {
+        return "Course Title: " + courseTitle
+                + "\nCourse Code: " + courseCode
+                + "\nPoints Total: " + pointsTotal
+                + "\nInstructor: " + instructorName;
