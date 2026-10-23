@@ -1,0 +1,72 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package calc;
+
+import java.util.Scanner;
+import java.text.NumberFormat;
+/**
+ *
+ * @author wutz2027
+ */
+public class Calc {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in); 
+            double amount;
+            int months;
+            System.out.print("Input a financial amount");
+            amount = scan.nextDouble();
+            System.out.print("Enter the number of months for repayment");
+            months = scan.nextInt();
+            InterestRateCalculator calculator =
+                    new InterestRateCalculator(months);
+            
+            // Calculate the monthly payment and total repayment
+            double monthlyPayment = calculator.calculateMonthlyPayment(amount);
+            double totalRepaid = monthlyPayment * months;
+            
+            // Create currency and percentage formatters
+            NumberFormat currency = NumberFormat.getCurrencyInstance();
+            NumberFormat percent = NumberFormat.getPercentInstance();
+            percent.setMaximumFractionDigits(2);
+            
+            // Display the results
+            System.out.println("\n--- Repayment Summary ---");
+            System.out.println("Interest Rate: " + percent.format(InterestRateCalculator.RATE));
+            System.out.println("Monthly Payment: "
+                    + currency.format(monthlyPayment));
+            System.out.println("Total Amount Repaid: "
+                    + currency.format(totalRepaid));
+        }
+    }
+
+
+class InterestRateCalculator {
+    // Public constant: the interest rate is 3.5%
+    public static double RATE = 0.035;
+
+    // Private variable: number of repayment months
+    private int months;
+
+    // Constructor sets the repayment period
+    public InterestRateCalculator(int m) {
+        months = m;
+    }
+
+    // Calculates the monthly payment, including interest
+    public double calculateMonthlyPayment(double amount) {
+
+        // Divide the original amount into monthly payments
+        double basePayment = amount / months;
+
+        // Add 3.5% interest to each monthly payment
+        double monthlyPayment = basePayment * (1 + RATE);
+
+        return monthlyPayment;
+    }
+ }
