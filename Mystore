@@ -1,0 +1,107 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package mystore;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author wutz2027
+ */
+public class MyStore {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+        final double MAX_BUDGET = 250.00;
+        double total = 0.00;
+        int count = 0;
+
+        while (true) {
+            System.out.println("Enter an item or Done to finish:");
+            String itemName = scan.nextLine().trim();
+
+            if (itemName.equalsIgnoreCase("Done")) {
+                break;
+            }
+
+            // Determine price based on item name
+            double price = 0.0;
+            if (itemName.equalsIgnoreCase("T Shirt")) {
+                price = 29.99;
+            } else if (itemName.equalsIgnoreCase("Shoes")) {
+                price = 125.99;
+            } else if (itemName.equalsIgnoreCase("Jeans")) {
+                price = 60.99;
+            } else if (itemName.equalsIgnoreCase("Jacket")) {
+                price = 250.00;
+            } else if (itemName.equalsIgnoreCase("Hat")) {
+                price = 25.99;
+            } else if (itemName.equalsIgnoreCase("Shorts")) {
+                price = 75.99;
+            } else if (itemName.equalsIgnoreCase("Blouse")) {
+                price = 88.99;
+            } else {
+                System.out.println("Item not found.\n");
+                continue;
+            }
+
+            // Create the item instance
+            Item item = new Item(itemName, price);
+
+            // Budget check logic
+            if (total + item.getDblPrice() <= MAX_BUDGET) {
+                total += item.getDblPrice();
+                count++;
+                System.out.println(item);
+            } else {
+                System.out.println("WARNING: You cannot go over your $250.00 budget.");
+            }
+
+            // Display progress after entry
+            System.out.println("Count: " + count);
+            System.out.printf("Spent so far: $%.2f%n%n", total);
+        }
+
+        System.out.println("Final Results:");
+        System.out.println("Count: " + count);
+        System.out.printf("Total spent: $%.2f%n", total);
+        scan.close();
+    }
+}
+
+class Item {
+
+    private String strName;
+    private double dblPrice;
+
+    public Item(String name, double price) {
+        strName = name;
+        dblPrice = price;
+    }
+
+    public String getStrName() {
+        return strName;
+    }
+
+    public void setStrName(String name) {
+        strName = name;
+    }
+
+    public double getDblPrice() {
+        return dblPrice;
+    }
+
+    public void setDblPrice(double price) {
+        dblPrice = price;
+    }
+
+    public String toString() {
+        return "Item: " + strName + ", Price: " + dblPrice;
+    }
+}
