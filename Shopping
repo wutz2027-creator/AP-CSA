@@ -1,0 +1,86 @@
+
+package shopping;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Shopping {
+
+    public static void main(String[] args) {
+
+        ArrayList<ShoppingItem> list = new ArrayList<ShoppingItem>();
+        Scanner scan = new Scanner(System.in);
+
+        // Get items and prices
+        for (int j = 0; j < 3; j++) {
+
+            System.out.println("Enter a new item:");
+            String name = scan.nextLine();
+
+            System.out.println("Enter the price of that item:");
+            double price = scan.nextDouble();
+            scan.nextLine();
+
+            list.add(new ShoppingItem(name, price));
+        }
+
+        // Show the list and prices
+        for (int i = 0; i < list.size(); i++) {
+
+            System.out.println("Item " + (i + 1) + " " + list.get(i).getName());
+            System.out.println("Price: $" + list.get(i).getPrice());
+        }
+
+        // Calculate total
+        double total = 0.00;
+
+        for (int i = 0; i < list.size(); i++) {
+            total = total + list.get(i).getPrice();
+        }
+
+        System.out.println("Total price: $" + total);
+
+        // Remove an item
+        System.out.println("Which item number to remove?");
+        int answer = scan.nextInt();
+
+        list.remove(answer - 1);
+
+        // Show updated list
+        for (int i = 0; i < list.size(); i++) {
+
+            System.out.println("Item " + (i + 1) + " " + list.get(i).getName());
+            System.out.println("Price: $" + list.get(i).getPrice());
+        }
+
+        // Recalculate total
+        total = 0.00;
+
+        for (int i = 0; i < list.size(); i++) {
+            total = total + list.get(i).getPrice();
+        }
+
+        System.out.println("Total price: $" + total);
+
+    }
+}
+
+
+class ShoppingItem {
+
+    private String name;
+    private double price;
+
+    public ShoppingItem(String name, double price) {
+        name = name;
+        price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+}
