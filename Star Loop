@@ -1,0 +1,76 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package starsloop;
+
+/**
+ *
+ * @author wutz2027
+ */
+public class StarsLoop {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        // A
+        System.out.println("A.");
+        for (int i = 10; i >= 1; i--) {
+            for (int j = 0; j < i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        System.out.println("B.");
+
+        // B
+        for (int i = 1; i <= 10; i++) {
+            for (int j = 10; j > i; j--) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j < i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        System.out.println("C.");
+
+        // C
+        for (int i = 10; i >= 1; i--) {
+            for (int j = 10; j > i; j--) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j < i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        System.out.println("D.");
+
+        // D
+        for (int i = 1; i <= 5; i++) {
+            for (int j = 5; j > i; j--) {
+                System.out.print(" ");
+            }
+            for (int j = 1; j <= (2 * i - 1); j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        for (int i = 5; i >= 1; i--) {
+            for (int j = 5; j > i; j--) {
+                System.out.print(" ");
+            }
+            for (int j = 1; j <= (2 * i - 1); j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+}
